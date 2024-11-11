@@ -1,0 +1,10 @@
+LOG:
+
+28/01/2024
+implemented Grid class.
+Flexible in size, has two attributes:
+grid = values on the grid
+constrained_grid = Where the program can place values (which are immutable)
+
+added print methods for each
+

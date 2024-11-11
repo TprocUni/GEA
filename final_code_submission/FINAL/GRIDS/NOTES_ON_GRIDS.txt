@@ -1,0 +1,3 @@
+NOTES_ON_GRIDS:
+generated at:
+http://www.opensky.ca/~jdhildeb/software/sudokugen/

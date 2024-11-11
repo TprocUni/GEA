@@ -1,0 +1,22 @@
+
+def learning_rate_test(learning_rates, problems, num_of_runs):
+    l_r_data = []
+    for l_r in learning_rates:
+        all_prob_data = []
+        for problem in problems:
+            problem_data = []
+            for i in range(num_of_runs):
+                grid = loadGrid(problem)
+                model = SudokuModel(num_mutation_types=6)
+                EA = EvolutionaryAlgorithm(grid=grid, guided_bool=True, model=model)
+                EA.mutation_selecter = EA.mutationSelectionRandom2
+                EA.crossover_method = EA.crossoverCyclic
+                environment = SudokuEnvironment(EA, grid, model, 1)
+                data, data2, data3 = environment.run(150, extract_avg_fitness, extract_fitness_diversity, extract_best_fitness, l_r)
+                best_fitness = min(data3)
+                avg_diversity = sum(data2) / len(data2)
+                problem_data.append([best_fitness, avg_diversity])
+            all_prob_data.append([problem_data])
+        #add to L_R data
+        l_r_data.append([all_prob_data])
+    return l_r_data           
